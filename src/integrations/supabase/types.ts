@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      company_reports: {
+        Row: {
+          company_name: string | null
+          comparable_companies: Json | null
+          created_at: string
+          id: string
+          report_data: Json
+          ticker: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_name?: string | null
+          comparable_companies?: Json | null
+          created_at?: string
+          id?: string
+          report_data: Json
+          ticker: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_name?: string | null
+          comparable_companies?: Json | null
+          created_at?: string
+          id?: string
+          report_data?: Json
+          ticker?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       demo_requests: {
         Row: {
           company: string

@@ -25,6 +25,7 @@ const Navigation = ({ onBookDemo }: NavigationProps) => {
 
   const navLinks = [
     { label: 'Products', href: '#products' },
+    { label: 'Research', href: '/research', isRoute: true },
     { label: 'Pricing', href: '#pricing' },
     { label: 'Docs', href: '#docs' },
     { label: 'FAQ', href: '#faq' },
@@ -75,7 +76,7 @@ const Navigation = ({ onBookDemo }: NavigationProps) => {
             {navLinks.map((link) => (
               <button
                 key={link.label}
-                onClick={() => scrollToSection(link.href)}
+                onClick={() => link.isRoute ? navigate(link.href) : scrollToSection(link.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
               >
                 {link.label}
@@ -142,7 +143,10 @@ const Navigation = ({ onBookDemo }: NavigationProps) => {
               {navLinks.map((link) => (
                 <button
                   key={link.label}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => { 
+                    link.isRoute ? navigate(link.href) : scrollToSection(link.href);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="text-muted-foreground hover:text-foreground transition-colors font-medium text-left py-2"
                 >
                   {link.label}
